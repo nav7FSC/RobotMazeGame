@@ -1,9 +1,5 @@
-/**
- * Package declaration for the maze with robot application.
- */
 package org.example.mazewithrobot;
 
-// Import statements for required JavaFX classes
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -15,25 +11,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- * Main class for the Maze with Robot application.
- * Extends JavaFX Application class to create the GUI.
- */
-public class Main extends Application {
+public class RobotMain extends Application {
 
-    /** The robot object that will navigate the maze. */
     private Robot robot;
-
-    /** Button to trigger the maze-solving algorithm. */
     private Button solveButton;
+    private Button carButton;
+    private Button maze2Button; // New button for Maze2
 
-    /**
-     * The start method is called after the init method has returned,
-     * and after the system is ready for the application to begin running.
-     *
-     * @param primaryStage the primary stage for this application, onto which
-     *                     the application scene can be set.
-     */
     @Override
     public void start(Stage primaryStage) {
         // Load the maze image using a relative path
@@ -57,15 +41,37 @@ public class Main extends Application {
 
         // Create button for solving the maze
         solveButton = new Button("Solve Maze");
-
-        // Set action for the solve button
         solveButton.setOnAction(e -> {
-            robot.solveMaze(); // Start solving the maze when button is clicked
+            robot.solveMaze();
             solveButton.setDisable(true); // Disable button while solving
         });
 
-        // Create an HBox to hold the button
-        HBox buttonBox = new HBox(10, solveButton);
+        // Create button to switch to the CarMain class
+        carButton = new Button("Car");
+        carButton.setOnAction(e -> {
+            CarMain carMain = new CarMain();
+            Stage carStage = new Stage();
+            try {
+                carMain.start(carStage); // Open CarMain in a new window (Stage)
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        // Create button to switch to Maze2Main class
+        maze2Button = new Button("Maze2");
+        maze2Button.setOnAction(e -> {
+            Maze2Main maze2Main = new Maze2Main();
+            Stage maze2Stage = new Stage();
+            try {
+                maze2Main.start(maze2Stage); // Open Maze2Main in a new window (Stage)
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        // Create an HBox to hold the buttons
+        HBox buttonBox = new HBox(10, solveButton, carButton, maze2Button);
 
         // Create a VBox to hold the maze pane and button box
         VBox root = new VBox(10, mazePane, buttonBox);
@@ -81,7 +87,7 @@ public class Main extends Application {
                 case LEFT:  robot.move(-10, 0); break;
                 case RIGHT: robot.move(10, 0); break;
             }
-            event.consume(); // Consume the event to prevent it from being handled by other nodes
+            event.consume();
         });
 
         // Request focus for the root VBox when clicked
@@ -102,7 +108,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        // Launch the JavaFX application
         launch(args);
     }
 }
