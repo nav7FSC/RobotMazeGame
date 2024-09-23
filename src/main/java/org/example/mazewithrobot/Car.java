@@ -18,7 +18,7 @@ public class Car {
     private Rectangle headlight;
     private double x, y;
     private double width, height;
-    private static final double SCALE = 0.20;
+    private static final double SCALE = 0.25;
     private static final int STEP_SIZE = 10;
     private static final int SOLVE_SPEED = 100;
     private static final int CAR_SIZE = 20;
@@ -56,6 +56,14 @@ public class Car {
         wheel2.setFill(Color.BLACK);
         headlight = new Rectangle(x + 85 * SCALE, y + 10 * SCALE, 10 * SCALE, 5 * SCALE);
         headlight.setFill(Color.YELLOW);
+    }
+
+    public void rotate(double angle) {
+        body.setRotate(angle);
+        roof.setRotate(angle);
+        wheel1.setRotate(angle);
+        wheel2.setRotate(angle);
+        headlight.setRotate(angle);
     }
 
     public void move(int deltaX, int deltaY) {
@@ -97,18 +105,46 @@ public class Car {
         }
         Point current = path.peek();
         List<Point> neighbors = getUnvisitedNeighbors(current);
+
         if (!neighbors.isEmpty()) {
             Point next = neighbors.get(0);
+
+            // Calculate the direction and rotate the car accordingly
+            if (next.x > current.x) {
+                this.rotate(0); // Moving right
+            } else if (next.x < current.x) {
+                this.rotate(180); // Moving left
+            } else if (next.y > current.y) {
+                this.rotate(90); // Moving down
+            } else if (next.y < current.y) {
+                this.rotate(-90); // Moving up
+            }
+
             path.push(next);
             visited.add(next);
             moveTo(next);
         } else {
             path.pop();
             if (!path.isEmpty()) {
-                moveTo(path.peek());
+                Point previous = path.peek();
+
+                // Calculate the direction back and rotate the car accordingly
+                if (previous.x > current.x) {
+                    this.rotate(0); // Moving right
+                } else if (previous.x < current.x) {
+                    this.rotate(180); // Moving left
+                } else if (previous.y > current.y) {
+                    this.rotate(90); // Moving down
+                } else if (previous.y < current.y) {
+                    this.rotate(-90); // Moving up
+                }
+
+                moveTo(previous);
             }
         }
     }
+
+
 
     private List<Point> getUnvisitedNeighbors(Point p) {
         List<Point> neighbors = new ArrayList<>();

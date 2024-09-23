@@ -28,7 +28,7 @@ public class CarMain extends Application {
         mazeView = new ImageView(mazeImage);
 
 
-        car = new Car(10, 260, mazeImage);
+        car = new Car(10, 270, mazeImage);
 
 
         Pane mazePane = new Pane();
@@ -52,14 +52,28 @@ public class CarMain extends Application {
         scene.setOnKeyPressed(event -> {
             if (!isSolving) {
                 switch (event.getCode()) {
-                    case UP:    car.move(0, -STEP_SIZE); break;
-                    case DOWN:  car.move(0, STEP_SIZE); break;
-                    case LEFT:  car.move(-STEP_SIZE, 0); break;
-                    case RIGHT: car.move(STEP_SIZE, 0); break;
+                    case UP:
+                        car.move(0, -STEP_SIZE);
+                        car.rotate(-90); // Rotate to face upwards
+                        break;
+                    case DOWN:
+                        car.move(0, STEP_SIZE);
+                        car.rotate(90); // Rotate to face downwards
+                        break;
+                    case LEFT:
+                        car.move(-STEP_SIZE, 0);
+                        car.rotate(180); // Rotate to face left
+                        break;
+                    case RIGHT:
+                        car.move(STEP_SIZE, 0);
+                        car.rotate(0); // Rotate to face right
+                        break;
                 }
             }
             event.consume();
         });
+
+
 
 
         root.setOnMouseClicked(event -> root.requestFocus());
