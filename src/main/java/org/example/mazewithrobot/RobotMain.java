@@ -11,75 +11,87 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Main class for the Maze with Robot application.
+ * Handles the primary stage, loading the maze and robot images, and managing
+ * interactions between buttons and robot movement.
+ */
 public class RobotMain extends Application {
 
     private Robot robot;
     private Button solveButton;
     private Button carButton;
-    private Button maze2Button; // New button for Maze2
+    private Button maze2Button;
 
+    /**
+     * Initializes and displays the primary stage for the application.
+     * Loads the maze and robot images, sets up button actions, and enables
+     * movement control for the robot.
+     *
+     * @param primaryStage the main window of the application
+     */
     @Override
     public void start(Stage primaryStage) {
-        // Load the maze image using a relative path
+        // Load the maze image and display it
         Image mazeImage = new Image(getClass().getResourceAsStream("/maze.png"));
         ImageView mazeView = new ImageView(mazeImage);
 
-        // Load the robot image using a relative path
+        // Load the robot image and display it
         Image robotImage = new Image(getClass().getResourceAsStream("/robot.png"));
         ImageView robotView = new ImageView(robotImage);
 
-        // Create a Pane to hold the maze and robot images
+        // Create a pane to hold the maze and robot images
         Pane mazePane = new Pane();
         mazePane.getChildren().addAll(mazeView, robotView);
 
-        // Set the initial position of the robot
+        // Set the robot's initial position on the maze
         robotView.setX(10);
         robotView.setY(260);
 
-        // Create a Robot instance and pass the robotView and mazeImage
+        // Initialize the robot and associate it with the maze
         robot = new Robot(robotView, mazeImage);
 
-        // Create button for solving the maze
+        // Button to trigger maze-solving
         solveButton = new Button("Solve Maze");
         solveButton.setOnAction(e -> {
             robot.solveMaze();
-            solveButton.setDisable(true); // Disable button while solving
+            solveButton.setDisable(true); // Disable button after maze-solving starts
         });
 
-        // Create button to switch to the CarMain class
+        // Button to switch to the car simulation
         carButton = new Button("Car");
         carButton.setOnAction(e -> {
             CarMain carMain = new CarMain();
             Stage carStage = new Stage();
             try {
-                carMain.start(carStage); // Open CarMain in a new window (Stage)
+                carMain.start(carStage); // Open CarMain in a new window
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
-        // Create button to switch to Maze2Main class
+        // Button to switch to the second maze
         maze2Button = new Button("Maze2");
         maze2Button.setOnAction(e -> {
             Maze2Main maze2Main = new Maze2Main();
             Stage maze2Stage = new Stage();
             try {
-                maze2Main.start(maze2Stage); // Open Maze2Main in a new window (Stage)
+                maze2Main.start(maze2Stage); // Open Maze2Main in a new window
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
-        // Create an HBox to hold the buttons
+        // Layout for buttons
         HBox buttonBox = new HBox(10, solveButton, carButton, maze2Button);
 
-        // Create a VBox to hold the maze pane and button box
+        // Layout for the main view, including the maze and buttons
         VBox root = new VBox(10, mazePane, buttonBox);
 
-        // Create a scene with the root pane and set its dimensions based on the maze image size
+        // Create the scene and scale its dimensions by 20%
         Scene scene = new Scene(root, mazeImage.getWidth() * 1.3, (mazeImage.getHeight() + 60) * 1.2);
 
-        // Set a key event handler for movement (optional if you want manual control)
+        // Handle keyboard input for robot movement
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:    robot.move(0, -10); break;
@@ -90,23 +102,24 @@ public class RobotMain extends Application {
             event.consume();
         });
 
-        // Request focus for the root VBox when clicked
+        // Request focus on the scene when mouse clicked
         root.setOnMouseClicked(event -> root.requestFocus());
 
-        // Set the title of the primary stage
+        // Set the title and display the primary stage
         primaryStage.setTitle("Maze with Robot");
-
-        // Set the scene for the primary stage
         primaryStage.setScene(scene);
-
-        // Show the primary stage
         primaryStage.show();
         primaryStage.setResizable(false);
 
-        // Request focus for the root VBox after showing the stage
+        // Request focus for the root element
         Platform.runLater(() -> root.requestFocus());
     }
 
+    /**
+     * Main entry point for launching the application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
