@@ -38,9 +38,10 @@ To run this project, ensure you have the following installed on your machine:
 - You can also use the arrow keys to manually move the robot within the maze.
 
 ## Authors
-- Nav Singh
-[GitHub](https://github.com/nav7FSC)
+
 - Afaq Waris
 [Github](https://github.com/Afaq136)
 - Philippe Jean
 [Github](https://github.com/Philippe-Je)
+- Nav Singh
+[GitHub](https://github.com/nav7FSC)
