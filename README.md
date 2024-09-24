@@ -37,7 +37,7 @@ To run this project, ensure you have the following installed on your machine:
 - Click the “Solve Maze” button to initiate the automatic solving of the maze.
 - You can also use the arrow keys to manually move the robot within the maze.
 
-## Author
+## Authors
 - Nav Singh
 [GitHub](https://github.com/nav7FSC)
 - Afaq Waris
