@@ -45,3 +45,5 @@ To run this project, ensure you have the following installed on your machine:
 [Github](https://github.com/Philippe-Je)
 - Nav Singh
 [GitHub](https://github.com/nav7FSC)
+- Ashraf Sangi 
+[Github](https://github.com/ashsangi)
