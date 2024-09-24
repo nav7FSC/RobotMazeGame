@@ -46,7 +46,7 @@ public class Maze2Main extends Application {
 
 
         VBox root = new VBox(10, mazePane, solveButton);
-        Scene scene = new Scene(root, mazeImage.getWidth(), mazeImage.getHeight() + 40);
+        Scene scene = new Scene(root, mazeImage.getWidth() * 1.2, (mazeImage.getHeight() + 40) * 1.2);
 
 
         scene.setOnKeyPressed(event -> {

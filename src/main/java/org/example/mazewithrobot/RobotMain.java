@@ -77,7 +77,7 @@ public class RobotMain extends Application {
         VBox root = new VBox(10, mazePane, buttonBox);
 
         // Create a scene with the root pane and set its dimensions based on the maze image size
-        Scene scene = new Scene(root, mazeImage.getWidth(), mazeImage.getHeight() + 40);
+        Scene scene = new Scene(root, mazeImage.getWidth() * 1.3, (mazeImage.getHeight() + 60) * 1.2);
 
         // Set a key event handler for movement (optional if you want manual control)
         scene.setOnKeyPressed(event -> {
