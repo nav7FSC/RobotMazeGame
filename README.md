@@ -1,19 +1,35 @@
 # Maze with Robot
 
 ## Overview
-The Maze with Robot project is a JavaFX application designed to simulate the navigation of a robot and a car through various mazes. This project provides a visual representation of algorithmic navigation and includes interactive elements to engage users. The application demonstrates object-oriented programming principles, JavaFX UI design, and basic animation techniques.
+The **Maze with Robot** project is a JavaFX application designed to simulate the navigation of a robot and a car through various maze challenges. This application serves as an educational tool to understand algorithmic navigation and object-oriented programming principles. It provides a visual representation of the robot and car's movements, allowing users to engage interactively with the maze-solving process.
+
+The project highlights the use of graphical user interface (GUI) design in JavaFX, basic animation techniques, and algorithmic problem-solving through the implementation of pathfinding algorithms. The overall aim is to offer an intuitive and interactive experience that showcases the capabilities of Java and JavaFX in building desktop applications.
 
 ## Project Features
-- **Multiple Mazes**: Users can switch between three different maze configurations, each presenting unique challenges.
-- **Robot Navigation**: A robot that autonomously solves the maze using a pathfinding algorithm.
-- **Car Representation**: A graphical representation of a car that simulates movement through the maze.
-- **Interactive UI**: Buttons to start solving the maze, providing an engaging user experience.
-- **Animation**: Smooth movement animations for both the robot and car as they navigate the mazes.
+- **Multiple Mazes**:
+    - Users can switch between three distinct maze configurations, each presenting unique challenges and obstacles.
+    - The mazes are designed with varying levels of complexity to test the robot's navigation capabilities.
+
+- **Robot Navigation**:
+    - A robot navigates each maze autonomously using a built-in pathfinding algorithm (such as A* or Dijkstra’s algorithm).
+    - The algorithm's efficiency and effectiveness can be visualized in real-time as the robot finds its way to the exit.
+
+- **Car Representation**:
+    - A graphical representation of a car simulates movement through the maze, offering a different perspective on maze navigation.
+    - Users can compare the movement strategies of the robot and the car to understand different approaches to navigation.
+
+- **Interactive UI**:
+    - The application features a user-friendly interface with buttons to start and stop solving the maze, allowing for an engaging experience.
+    - Tooltips and instructions help guide users on how to interact with the application effectively.
+
+- **Smooth Animations**:
+    - Both the robot and car movements are animated smoothly, providing a visually appealing experience as they navigate through the maze.
+    - The animations include transitions for starting and stopping, which enhances user interaction.
 
 ## Technologies Used
-- **Java 22**: The programming language used for development.
-- **JavaFX**: A powerful framework for building rich client applications in Java, providing a modern UI.
-- **Maven**: A project management tool that simplifies the build process and dependency management.
+- **Java 22**: The core programming language used for the project, leveraging its robust platform for building desktop applications with modern features and capabilities.
+- **JavaFX**: A powerful framework for building rich client applications in Java, providing advanced capabilities for handling graphics, media, and UI components.
+- **Maven**: A project management and build automation tool that simplifies dependency management and project configuration, ensuring smooth builds and easy integration of external libraries.
 
 ## Getting Started
 
@@ -36,6 +52,16 @@ To run this project, ensure you have the following installed on your machine:
 - Upon launching the application, you will see a tabbed interface with three tabs for each maze.
 - Click the “Solve Maze” button to initiate the automatic solving of the maze.
 - You can also use the arrow keys to manually move the robot within the maze.
+
+## Example
+
+Maze1
+
+https://github.com/user-attachments/assets/df860d17-8413-43bd-a933-64a8d9af25c9
+
+Maze2
+
+https://github.com/user-attachments/assets/6b87e8a0-44f3-4da0-ad26-25b6ba13447b
 
 ## Authors
 
